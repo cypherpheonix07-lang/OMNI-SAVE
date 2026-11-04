@@ -1,0 +1,6 @@
+{
+  "name": "OmniSave - Pinterest & Instagram HD Video Downloader",
+  "description": "Lightning-fast video downloader for Pinterest & Instagram with batch processing, high-resolution formats, secure history vault, and cross-platform sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
