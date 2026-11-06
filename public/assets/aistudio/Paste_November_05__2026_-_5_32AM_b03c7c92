@@ -1,0 +1,709 @@
+Act as a senior product architect, full-stack developer, mobile experience designer, research-data engineer, and interactive 3D visualization engineer.
+
+Build my personalized research discovery website and mobile-compatible application. Work directly in the available IDE, repository, or AI website-building platform.
+
+Use **FrontierAtlas** as a configurable working name.
+
+# 1. Product objective
+
+Create a personal research platform where I can discover the latest developments, understand them in detail, identify where and by whom they are being developed, and explore supported software and hardware through interactive experiences.
+
+Cover these major domains:
+
+1. Artificial intelligence, deep tech, and engineering.
+2. Quantum computing and quantum technologies.
+3. Neuroscience, neurotechnology, and neural engineering.
+4. Bioengineering, biotechnology, and biological systems engineering.
+5. Robotics, autonomous systems, and supporting hardware.
+
+Preserve neural networks as a substantial AI category. Distinguish artificial neural networks from biological neural systems while connecting relevant interdisciplinary research.
+
+The product must combine:
+
+- Personalized research updates.
+- Detailed project and technology profiles.
+- Country and institution discovery.
+- Researcher and team attribution.
+- Images and technical diagrams.
+- Software demonstrations.
+- Dedicated interactive 3D pages.
+- Supported educational simulations.
+- Saved collections and research comparisons.
+- A responsive, installable mobile experience.
+
+Do not stop at a static landing page or implementation plan. Build working functionality within the environment’s actual capabilities.
+
+# 2. Adapt to any development environment
+
+Before implementation:
+
+- Inspect the repository or platform workspace.
+- Identify existing functionality, framework, data storage, authentication, hosting, and integration capabilities.
+- Read applicable project instructions.
+- Preserve existing useful work.
+- Identify whether background jobs, server-side secrets, file storage, custom packages, isolated execution, and 3D rendering are supported.
+- Select compatible dependencies using current official documentation.
+
+If an existing suitable stack is present, extend it.
+
+If starting from an empty workspace, use the platform’s supported stack and a maintainable architecture.
+
+If the platform cannot support a required feature directly, implement a clean integration boundary and a clear configuration or unavailable state. Explain the external service required.
+
+Do not pretend unsupported capabilities work.
+
+Make routine implementation decisions autonomously. Ask only for genuinely blocking information, credentials, or consequential choices.
+
+# 3. Main application sections
+
+Build connected routes or equivalent platform pages for:
+
+- Home and personalized dashboard.
+- Latest research.
+- Domain and subtopic explorers.
+- Global research map.
+- Countries and regions.
+- Universities and institutions.
+- Laboratories and research centers.
+- Researchers and teams.
+- Project details.
+- Software demo studio.
+- Hardware and systems gallery.
+- Dedicated 3D exploration studio.
+- Educational experiment playground.
+- Project comparison.
+- Saved projects and collections.
+- Reading history and private notes.
+- Notifications and digests.
+- Preferences and account settings.
+- Administration and source management.
+
+Use shared components and consistent interaction patterns.
+
+Every visible action must work or show an understandable explanation of its requirements. Avoid dead buttons, fake activity feeds, and fabricated statistics.
+
+# 4. Research domains and taxonomy
+
+Support multiple categories per project.
+
+Artificial intelligence and deep tech:
+- Machine learning and deep learning.
+- Artificial neural networks.
+- Language and multimodal models.
+- Computer vision and speech.
+- Agents and reasoning.
+- Reinforcement learning.
+- AI safety and interpretability.
+- Edge AI and efficient computing.
+- Neuromorphic computing.
+- Semiconductors and computing architectures.
+- Photonics, sensors, advanced materials, and related engineering.
+
+Quantum technologies:
+- Quantum processors and qubit technologies.
+- Quantum circuits and algorithms.
+- Error correction.
+- Quantum communication and networking.
+- Quantum sensing.
+- Quantum simulation.
+- Hybrid quantum-classical systems.
+
+Neuroscience and neurotechnology:
+- Computational neuroscience.
+- Brain imaging and signal processing.
+- Brain–computer interfaces.
+- Neural recording and stimulation technologies.
+- Neural prosthetics.
+- Neural engineering.
+- Cognitive and systems neuroscience.
+- Connections between biological and artificial intelligence.
+
+Bioengineering and biotechnology:
+- Biomedical engineering.
+- Biomaterials.
+- Biosensors.
+- Bioinformatics and computational biology.
+- Synthetic biology at an appropriate research-explanation level.
+- Tissue engineering and regenerative technologies.
+- Biomechanics.
+- Lab-on-chip systems.
+- Biomanufacturing technologies.
+- Medical devices and biological instrumentation.
+
+Robotics and engineering:
+- Manipulators and industrial robots.
+- Humanoid and mobile robots.
+- Soft robotics.
+- Medical and assistive robotics.
+- Autonomous navigation.
+- Perception, planning, and control.
+- Mechatronics and embedded systems.
+- Human–robot interaction.
+
+Keep the taxonomy editable and avoid duplicating the same project across disconnected records.
+
+# 5. Personalized experience
+
+Provide onboarding for:
+
+- Preferred domains and subtopics.
+- Countries and regions.
+- Institutions and researchers to follow.
+- Software, hardware, or mixed interests.
+- Preferred technical depth.
+- Preferred language and timezone.
+- Interest in papers, code, datasets, models, demos, or commercial developments.
+- Notification and digest preferences.
+
+Allow onboarding to be skipped.
+
+Build the dashboard around:
+
+- Relevant recent discoveries.
+- Updates from followed sources and institutions.
+- Recently released software and datasets.
+- Projects with interactive previews.
+- Saved projects that have changed.
+- Continue-reading items.
+- Related research suggestions.
+
+Explain recommendations using actual signals such as selected topics, followed institutions, and publication dates.
+
+Provide controls to hide a topic, reduce similar recommendations, and reset personalization.
+
+# 6. Reliable research ingestion
+
+Implement a modular pipeline for documented scholarly APIs, authorized feeds, official project pages, institutional newsrooms, and verified repositories.
+
+Prefer primary research and official project information.
+
+Verify source integration requirements against current documentation. Respect source terms, licenses, rate limits, and access restrictions.
+
+Classify content as applicable:
+
+- Peer-reviewed paper.
+- Preprint.
+- Institutional announcement.
+- Code release.
+- Dataset release.
+- Hardware release.
+- Technical documentation.
+- Independent reporting.
+- Correction or retraction.
+
+Store:
+
+- Canonical URL.
+- Source identity.
+- DOI or other stable identifier when available.
+- Publication timestamp.
+- Source update timestamp.
+- First-seen timestamp.
+- Last successful fetch timestamp.
+- Source language.
+- Provenance and extraction status.
+
+Implement deduplication, retries, backoff, caching, job history, and failure reporting.
+
+Link related papers, announcements, repositories, and datasets to a shared project without discarding their separate sources.
+
+Clearly distinguish publication time from ingestion time.
+
+Show “last checked” and stale-source indicators. Describe updates as scheduled or near-real-time according to the actual implementation.
+
+If live integrations are unavailable, use visibly labeled sample records and setup instructions. Never mix fabricated discoveries into a live research feed.
+
+# 7. Detailed project information
+
+Create a comprehensive project page with progressive disclosure: readable overview first, deeper information in clearly organized sections.
+
+Include available, verified information about:
+
+Overview:
+- Project title.
+- Research domain.
+- Concise summary.
+- Problem addressed.
+- Claimed contribution.
+- Intended applications.
+- Research maturity and evidence status.
+
+Origins:
+- Countries and development locations.
+- University, company, laboratory, or research center.
+- Department or research group.
+- Researchers and their project roles.
+- Collaborating institutions.
+- Funding acknowledgments when publicly documented.
+- Official project and profile links.
+
+Technical explanation:
+- How the system works.
+- Architecture and major components.
+- Inputs and outputs.
+- Data flow, signal flow, or physical process.
+- Methods, algorithms, or governing principles.
+- Software and hardware requirements.
+- Interfaces and dependencies.
+- Experimental setup.
+- Results and evaluation conditions.
+- Limitations and unresolved questions.
+
+Resources:
+- Papers.
+- Documentation.
+- Source repositories.
+- Datasets.
+- Official demos.
+- Videos and images.
+- Licensed 3D assets.
+- Reproduction requirements.
+- Licensing and usage restrictions.
+
+History:
+- Initial publication.
+- Subsequent releases.
+- Major milestones.
+- Corrections.
+- Related and follow-up work.
+
+Use “not publicly available” or “not verified” for missing information. Never invent affiliations, funding, benchmark results, specifications, or readiness.
+
+For biomedical and neuroscience research, distinguish computational studies, laboratory studies, animal studies, human research, and clinical use when the sources support that distinction. Do not imply clinical approval or effectiveness from a research announcement.
+
+# 8. Separate software and hardware explanations
+
+For software projects, show applicable details such as:
+
+- Architecture.
+- Models and algorithms.
+- Dependencies.
+- Data requirements.
+- APIs and integrations.
+- Input and output examples.
+- Compute requirements.
+- Installation and reproduction instructions.
+- License.
+- Evaluation method.
+- Available demo capability.
+
+For hardware projects, show applicable details such as:
+
+- Physical structure.
+- Major components.
+- Sensors and actuators.
+- Processing and control units.
+- Power requirements.
+- Communication interfaces.
+- Materials and dimensions when documented.
+- Operating principles.
+- Control and signal flow.
+- Operating constraints.
+- Available diagrams and models.
+
+For combined systems, explain how the software interacts with the hardware.
+
+Display only relevant fields. Do not force a biological research project into a robotics-specific template.
+
+# 9. Images and diagrams
+
+Use images and diagrams to explain the research, not merely decorate pages.
+
+Support:
+
+- Official project images.
+- Device and component photos.
+- Architecture diagrams.
+- Data-flow diagrams.
+- Signal-processing diagrams.
+- System block diagrams.
+- Annotated hardware diagrams.
+- Scientific illustrations.
+- Model and experiment screenshots.
+
+Each visual should have:
+
+- A descriptive caption.
+- Source attribution.
+- License or permission information where relevant.
+- Alternative text.
+- A label indicating whether it is an original source figure, explanatory reconstruction, or conceptual illustration.
+
+Do not generate an image and present it as an actual research result, microscope image, brain scan, device photograph, or experimental measurement.
+
+Use SVG or another precise format for technical diagrams. Use raster imagery where appropriate.
+
+Provide zoom, full-screen viewing, and mobile-friendly layouts.
+
+Do not infer missing technical details from a photograph alone.
+
+# 10. Dedicated 3D exploration studio
+
+Create a dedicated 3D page for supported projects, accessible from a clearly visible “Explore in 3D” action.
+
+The studio should include:
+
+- Central interactive viewport.
+- Project title and preview-mode label.
+- Component list.
+- Contextual information panel.
+- Camera and display controls.
+- Animation timeline when supported.
+- Parameter controls when supported.
+- Explanation of what is represented.
+- Source and model attribution.
+- Loading, error, and unavailable states.
+
+Support:
+
+- Rotate, zoom, and pan.
+- Reset camera.
+- Full-screen mode.
+- Component selection.
+- Highlighting and isolation.
+- Component visibility toggles.
+- Information hotspots.
+- Exploded views where the model hierarchy supports them.
+- Transparency and wireframe where meaningful.
+- Supported animations.
+- Guided walkthroughs.
+- Touch controls.
+
+Use browser-compatible assets such as licensed glTF/GLB models. Treat CAD conversion as a separate workflow.
+
+Measurements must use verified model scale. Disable measurement tools when scale is unknown.
+
+Do not imply that every project has an accurate 3D model.
+
+# 11. Distinguish preview capabilities
+
+Use consistent labels throughout the application:
+
+**Interactive 3D visualization**
+A navigable representation of appearance, structure, or components.
+
+**Animated explanation**
+A visual explanation of a mechanism or process.
+
+**Kinematic model**
+Motion based on defined geometry and joint constraints.
+
+**Physics or mathematical simulation**
+Calculated behavior based on a documented model and assumptions.
+
+**Live telemetry**
+Data received from an actual connected system, with timestamps and connection status.
+
+**Authorized remote operation**
+Control of real equipment through an authorized integration.
+
+**Recorded demonstration**
+Previously captured media or results.
+
+Real-time rendering means the viewer responds to user interaction. It does not automatically mean the underlying experiment or device is live.
+
+For simulations, display supported parameter ranges, units, assumptions, limitations, and reset controls.
+
+For live integrations, show data timestamps, latency where measurable, connection state, and stale-data warnings.
+
+Do not fabricate telemetry or expose real-device controls without an actual authorized backend.
+
+# 12. Domain-specific interactive experiences
+
+Build a small set of original educational experiences that demonstrate the platform’s capabilities.
+
+Examples:
+
+- A small artificial neural network with visible inputs, connections, activations, and outputs.
+- A quantum circuit simulator with supported gates and measurement probabilities.
+- A robotic arm with constrained joint controls.
+- A conceptual neuron and signal-propagation visualization.
+- A simplified biosensor with labeled sensing, processing, and output stages.
+
+Select examples that can be implemented correctly within the available environment.
+
+Label them as educational models, separate from third-party research projects.
+
+Explain simplifications. Do not present a conceptual brain visualization as a validated brain simulation or medical assessment.
+
+Clearly label classical quantum simulation, limit circuit size, and show real hardware execution only when a genuine provider integration exists.
+
+# 13. Software demo studio
+
+Provide capability-based software previews:
+
+1. Official hosted demo, embedded only when permitted.
+2. Safe browser-based demonstration.
+3. Isolated backend execution when suitable infrastructure exists.
+4. Recorded walkthrough or reproduction guide when execution is unavailable.
+
+Applicable controls:
+
+- Sample input.
+- Editable input.
+- Run, stop, and reset.
+- Output viewer.
+- Execution status.
+- Error details.
+- Runtime information.
+- Logs that do not expose secrets.
+- Full-screen mode.
+
+Run untrusted code in appropriately isolated environments. Do not execute arbitrary repositories in the main application server.
+
+Use separate origins for untrusted browser content, restrictive permissions, resource limits, timeouts, and controlled network access.
+
+A public repository is not proof that a project can run inside a browser.
+
+# 14. Countries, institutions, and people
+
+Provide an interactive map and an equivalent accessible list.
+
+Allow exploration by:
+
+- Country.
+- Region and city when verified.
+- Institution type.
+- Research domain.
+- Project maturity.
+- Publication period.
+- Software or hardware.
+- Preview availability.
+
+Support multinational research and multiple affiliations.
+
+Distinguish institution headquarters, author affiliation, and actual development location. Do not infer research location from nationality or website domain.
+
+Institution and laboratory profiles should show verified descriptions, research areas, projects, public team information, collaborations, and official links.
+
+Researcher profiles should rely on public professional sources and stable identifiers where available. Avoid merging people with similar names without evidence.
+
+Map counts must reflect this platform’s indexed coverage, not claim to represent all research worldwide.
+
+# 15. Search, comparison, and personal workspace
+
+Implement global search and filters across projects, topics, institutions, countries, and researchers.
+
+Include:
+
+- Shareable filter URLs.
+- Sorting by publication date, update date, and relevance.
+- Bookmarks.
+- Collections.
+- Private notes.
+- Reading history.
+- Follow and unfollow.
+- Related projects.
+- Side-by-side comparison.
+
+Compare methods, objectives, components, institutions, maturity, resources, licenses, and preview capabilities.
+
+Compare numerical performance only when datasets, units, conditions, and methodologies are sufficiently compatible.
+
+Explain when direct comparison would be misleading.
+
+# 16. Source-grounded research assistant
+
+If an AI provider is configured, add an assistant that can:
+
+- Explain a project at different technical levels.
+- Summarize available sources.
+- Explain components and diagrams.
+- Compare selected projects.
+- Identify prerequisites for understanding a topic.
+- Suggest a reading sequence.
+- Answer questions about indexed research.
+
+Ground substantive claims in retrieved sources and provide citations.
+
+Distinguish source statements, inference, and educational explanation.
+
+Treat retrieved material as untrusted data. Prevent embedded instructions from changing tool permissions or exposing secrets.
+
+Keep API credentials server-side. Add usage limits, timeouts, and clear failure states.
+
+The application must remain useful without a paid model provider.
+
+# 17. Visual design and Figma compatibility
+
+Create a polished, readable design system suitable for a serious personal research platform.
+
+If an accessible Figma design is supplied, inspect its real variables and components. Otherwise create original Figma-ready design tokens; do not claim they were sourced from Figma.
+
+Suggested starting palette:
+
+- Background: #0B1020.
+- Surface: #141C2F.
+- Elevated surface: #1B2740.
+- Primary accent: #6366F1.
+- Secondary accent: #06B6D4.
+- Success: #22C55E.
+- Warning: #F59E0B.
+- Error: #EF4444.
+- Main text: #F8FAFC.
+- Muted text: #A8B3C7.
+- Light background: #F8FAFC.
+- Light surface: #FFFFFF.
+- Light-theme text: #0F172A.
+
+Validate color contrast and adjust as necessary.
+
+Provide dark, light, and system themes.
+
+Use consistent typography, spacing, cards, tables, navigation, diagrams, and controls. Keep motion restrained and respect reduced-motion preferences.
+
+Use domain accents without relying solely on color to communicate meaning.
+
+# 18. Mobile-compatible website and app experience
+
+Deliver a responsive website and installable PWA as the initial mobile experience.
+
+Support:
+
+- Small screens through large desktops.
+- Touch-friendly controls.
+- Compact mobile navigation.
+- Expandable filters.
+- Full-screen mobile previews.
+- Safe-area insets.
+- Accessible text sizes.
+- Saved-content offline access.
+- Network and offline indicators.
+- Clear cached-content timestamps.
+- Appropriate icons and manifest.
+- Notifications where supported and explicitly enabled.
+
+Keep private data out of indiscriminate service-worker caches. Clear account-specific cached data appropriately on logout.
+
+For 3D content, use lazy loading, adaptive quality, compressed assets, rendering suspension when offscreen, and static fallbacks.
+
+Design reusable backend interfaces for a future native application. If the environment supports building a native client, clearly distinguish that deliverable from the PWA.
+
+Do not claim app-store publication or native-device verification without performing it.
+
+# 19. Backend, data, and integrations
+
+Use a maintainable architecture with:
+
+- Persistent storage.
+- Database migrations or platform-equivalent schema management.
+- Authentication.
+- Server-side authorization.
+- Background ingestion.
+- Search.
+- Asset storage.
+- Versioned APIs or equivalent reusable service interfaces.
+- Observability and error handling.
+
+Model appropriate entities, including:
+
+User, Preference, Domain, Topic, Country, Institution, Laboratory, Researcher, Project, Publication, Source, SourceRecord, Affiliation, Collaboration, Asset, Diagram, Preview, SimulationDefinition, Bookmark, Collection, Note, Follow, NotificationPreference, IngestionJob, and AuditEvent.
+
+Support multiple sources, countries, institutions, and topics per project.
+
+Separate curated metadata, source-derived facts, generated summaries, and user-owned content.
+
+Provide environment-variable examples or the platform’s equivalent configuration instructions. Never include real secrets in committed code or client bundles.
+
+# 20. Administration and reliability
+
+Build administrative controls for:
+
+- Approved sources.
+- Ingestion schedules.
+- Failed jobs.
+- Duplicate review.
+- Metadata corrections.
+- Affiliations.
+- Licenses and asset attribution.
+- Preview approval.
+- Broken links.
+- Corrections and retractions.
+
+Implement input validation, rate limiting, role checks, safe file handling, and protection against injection and cross-site scripting.
+
+Protect external-fetching services against SSRF, including redirect and private-network checks.
+
+Keep users’ notes, preferences, and collections private.
+
+Provide account-data export and deletion where accounts are implemented.
+
+Record useful operational events without logging credentials or unnecessary personal information.
+
+# 21. Implementation workflow
+
+Complete the work in practical phases:
+
+1. Inspect the environment and produce a concise capability assessment.
+2. Establish the design system, navigation, and data model.
+3. Build research browsing and comprehensive project pages.
+4. Add ingestion, provenance, and freshness indicators.
+5. Add institutions, researchers, country exploration, and personalization.
+6. Implement the software demo system.
+7. Implement the dedicated 3D studio and educational examples.
+8. Complete PWA behavior, saved collections, and notifications.
+9. Add administration, accessibility improvements, and performance optimization.
+10. Run verification, fix defects, and document actual limitations.
+
+Maintain a persistent implementation checklist in the project when the environment supports it.
+
+Prioritize a working end-to-end flow: source ingestion → research card → detailed project page → supported preview → saved collection.
+
+Then expand coverage without weakening the completed flow.
+
+# 22. Verification
+
+Run appropriate checks for:
+
+- Installation and startup.
+- Builds and type checks.
+- Core navigation.
+- Search and filtering.
+- Persistence.
+- Source provenance.
+- Deduplication and ingestion failure handling.
+- Authentication and private-data access.
+- Administrative authorization.
+- Preview isolation.
+- Model loading and 3D controls.
+- Simulation parameter limits.
+- Missing assets and unavailable integrations.
+- Mobile layouts.
+- Keyboard access and focus behavior.
+- Offline behavior and cache safety.
+- Browser console errors.
+- Failed network requests.
+
+Use browser automation if available. If unavailable, explicitly identify which checks could not be performed.
+
+Test representative domain records and visibly labeled sample fixtures.
+
+Report only checks actually executed. Do not claim all browsers, all devices, full scientific accuracy, or production readiness without evidence.
+
+# 23. Final delivery and completion report
+
+Deliver the working application and relevant setup materials:
+
+- Implemented source or platform configuration.
+- Data schema and migrations.
+- Environment setup.
+- Source integration instructions.
+- Preview and simulation capability documentation.
+- Asset licenses and attribution.
+- Test results.
+- Known limitations.
+- Deployment instructions.
+- Credential-dependent features.
+
+Clearly state:
+
+- What works.
+- Which sources are connected.
+- Which content is sample data.
+- Which previews are visualizations or simulations.
+- Whether any real device or external execution service is connected.
+- What configuration remains.
+
+Do not buy services, publish publicly, or push to a remote repository without authorization.
+
+Begin by inspecting the current environment, then implement and verify the application. Prioritize trustworthy research information, detailed explanations, useful interactive exploration, and an excellent mobile experience.

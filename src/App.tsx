@@ -20,6 +20,7 @@ import { calculateProgress, calculateSpeed, calculateEta } from './utils/realtim
 import { useGlobalShortcuts } from './hooks/useGlobalShortcuts.js';
 import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal.js';
 import { RealtimeDownloadMonitor } from './components/RealtimeDownloadMonitor.js';
+import { FrontierAtlasWorkspace } from './components/FrontierAtlasWorkspace.js';
 import {
   Sparkles,
   Download,
@@ -35,7 +36,7 @@ import {
 
 export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
-  const [activeTab, setActiveTab] = useState<'single' | 'batch' | 'history'>('single');
+  const [activeTab, setActiveTab] = useState<'single' | 'batch' | 'history' | 'frontier'>('single');
   const [singleUrl, setSingleUrl] = useState('');
   const [batchText, setBatchText] = useState('');
   const [items, setItems] = useState<MediaItem[]>(SAMPLE_MEDIA_ITEMS);
@@ -506,126 +507,132 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 pb-16">
-        {/* URL Input Hero Section */}
-        <UrlInputSection
-          mode={activeTab === 'batch' ? 'batch' : 'single'}
-          onExtractSingle={handleExtractSingle}
-          onExtractBatch={handleExtractBatch}
-          isLoading={isLoading}
-          singleUrl={singleUrl}
-          setSingleUrl={setSingleUrl}
-          batchText={batchText}
-          setBatchText={setBatchText}
-        />
+        {activeTab === 'frontier' ? (
+          <FrontierAtlasWorkspace onToast={showToast} />
+        ) : (
+          <>
+            {/* URL Input Hero Section */}
+            <UrlInputSection
+              mode={activeTab === 'batch' ? 'batch' : 'single'}
+              onExtractSingle={handleExtractSingle}
+              onExtractBatch={handleExtractBatch}
+              isLoading={isLoading}
+              singleUrl={singleUrl}
+              setSingleUrl={setSingleUrl}
+              batchText={batchText}
+              setBatchText={setBatchText}
+            />
 
-        {/* Batch Queue Bar (visible when batch items exist) */}
-        {activeTab === 'batch' && (
-          <BatchQueue
-            items={items}
-            onDownloadZip={handleDownloadZip}
-            onDownloadSequential={handleDownloadSequential}
-            onClearAll={() => setItems([])}
-            isZipping={isZipping}
-            zipProgress={zipProgress}
-          />
-        )}
+            {/* Batch Queue Bar (visible when batch items exist) */}
+            {activeTab === 'batch' && (
+              <BatchQueue
+                items={items}
+                onDownloadZip={handleDownloadZip}
+                onDownloadSequential={handleDownloadSequential}
+                onClearAll={() => setItems([])}
+                isZipping={isZipping}
+                zipProgress={zipProgress}
+              />
+            )}
 
-        {/* Media Results Gallery */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6 pb-2 border-b border-zinc-200 dark:border-zinc-800">
-            <div className="flex items-center gap-2">
-              <h2 className="text-lg font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
-                {activeTab === 'batch' ? 'Batch Queue Results' : 'Extracted Media & Downloads'}
-              </h2>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
-                {items.length} Ready
-              </span>
-            </div>
+            {/* Media Results Gallery */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between mb-6 pb-2 border-b border-zinc-200 dark:border-zinc-800">
+                <div className="flex items-center gap-2">
+                  <h2 className="text-lg font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">
+                    {activeTab === 'batch' ? 'Batch Queue Results' : 'Extracted Media & Downloads'}
+                  </h2>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                    {items.length} Ready
+                  </span>
+                </div>
 
-            <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-              <span className="hidden sm:inline">Automatic 1080p stream selector</span>
-              {items.length > 1 && (
-                <button
-                  type="button"
-                  onClick={handleDownloadZip}
-                  disabled={isZipping}
-                  className="font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Zip All ({items.length})</span>
-                </button>
+                <div className="flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
+                  <span className="hidden sm:inline">Automatic 1080p stream selector</span>
+                  {items.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={handleDownloadZip}
+                      disabled={isZipping}
+                      className="font-semibold text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-1"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Zip All ({items.length})</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {items.length === 0 ? (
+                <div className="py-16 text-center rounded-3xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50">
+                  <Download className="w-10 h-10 text-zinc-400 mx-auto mb-3" />
+                  <h3 className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
+                    No active videos in queue
+                  </h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                    Paste any Pinterest Pin or Instagram Reel link above to begin.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  {items.map((item) => (
+                    <MediaCard
+                      key={item.id}
+                      item={item}
+                      onDownload={handleDownload}
+                      onDownloadRealtime={handleDownloadRealtime}
+                      onPreview={(previewItem) => setPreviewVideo(previewItem)}
+                      onSendToPhone={handleSendToPhone}
+                      onToggleFavorite={handleToggleFavorite}
+                      onRemove={handleRemoveItem}
+                    />
+                  ))}
+                </div>
               )}
-            </div>
-          </div>
+            </section>
 
-          {items.length === 0 ? (
-            <div className="py-16 text-center rounded-3xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50">
-              <Download className="w-10 h-10 text-zinc-400 mx-auto mb-3" />
-              <h3 className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
-                No active videos in queue
-              </h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                Paste any Pinterest Pin or Instagram Reel link above to begin.
-              </p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {items.map((item) => (
-                <MediaCard
-                  key={item.id}
-                  item={item}
-                  onDownload={handleDownload}
-                  onDownloadRealtime={handleDownloadRealtime}
-                  onPreview={(previewItem) => setPreviewVideo(previewItem)}
-                  onSendToPhone={handleSendToPhone}
-                  onToggleFavorite={handleToggleFavorite}
-                  onRemove={handleRemoveItem}
-                />
-              ))}
-            </div>
-          )}
-        </section>
+            {/* Feature Highlights Grid */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-12 border-t border-zinc-200 dark:border-zinc-800/80">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center sm:text-left">
+                <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4">
+                    <Zap className="w-5 h-5 stroke-[2.5]" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    Lightning Server-Side Processing
+                  </h3>
+                  <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    Server-side stream resolution with memory caching returns direct MP4 video URLs in milliseconds, bypassing client network restrictions.
+                  </p>
+                </div>
 
-        {/* Feature Highlights Grid */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-12 border-t border-zinc-200 dark:border-zinc-800/80">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center sm:text-left">
-            <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4">
-                <Zap className="w-5 h-5 stroke-[2.5]" />
+                <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
+                    <Layers className="w-5 h-5 stroke-[2.5]" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    Batch Queuing & ZIP Bundles
+                  </h3>
+                  <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    Queue up to 20 Pinterest pins and Instagram reels concurrently. Package entire collections into one uncompressed ZIP file with a single click.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+                    <Shield className="w-5 h-5 stroke-[2.5]" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    Encrypted Vault & QR Sync
+                  </h3>
+                  <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    PIN-protected history keeps your personal media archives private. Instant QR code rendering lets you scan with any phone camera to save directly.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Lightning Server-Side Processing
-              </h3>
-              <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Server-side stream resolution with memory caching returns direct MP4 video URLs in milliseconds, bypassing client network restrictions.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
-                <Layers className="w-5 h-5 stroke-[2.5]" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Batch Queuing & ZIP Bundles
-              </h3>
-              <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Queue up to 20 Pinterest pins and Instagram reels concurrently. Package entire collections into one uncompressed ZIP file with a single click.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
-                <Shield className="w-5 h-5 stroke-[2.5]" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Encrypted Vault & QR Sync
-              </h3>
-              <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                PIN-protected history keeps your personal media archives private. Instant QR code rendering lets you scan with any phone camera to save directly.
-              </p>
-            </div>
-          </div>
-        </section>
+            </section>
+          </>
+        )}
       </main>
 
       {/* Footer */}

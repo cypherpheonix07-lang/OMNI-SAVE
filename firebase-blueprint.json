@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated FrontierAtlas user profile and role assignment",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["Owner", "Administrator", "Member"] },
+        "followedDomains": { "type": "array", "items": { "type": "string" } },
+        "followedCountries": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "SavedResearchItem": {
+      "title": "SavedResearchItem",
+      "description": "User-saved research publication, project, or simulation bookmark with personal notes",
+      "type": "object",
+      "properties": {
+        "itemId": { "type": "string" },
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "domain": { "type": "string" },
+        "note": { "type": "string" },
+        "collectionId": { "type": "string" },
+        "savedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["itemId", "uid", "title", "domain", "savedAt"]
+    },
+    "ResearchCollection": {
+      "title": "ResearchCollection",
+      "description": "User-curated research collection",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "itemIds": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "uid", "name", "createdAt"]
+    },
+    "Publication": {
+      "title": "Publication",
+      "description": "Normalized research item with full provenance timestamps",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "domain": { "type": "string" },
+        "summary": { "type": "string" },
+        "publishedAt": { "type": "string" },
+        "lastFetchedAt": { "type": "string" },
+        "publishedToFeedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "domain", "summary"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile document"
+    },
+    "/users/{userId}/savedItems/{itemId}": {
+      "schema": { "$ref": "#/entities/SavedResearchItem" },
+      "description": "User-scoped saved research items and notes"
+    },
+    "/users/{userId}/collections/{collectionId}": {
+      "schema": { "$ref": "#/entities/ResearchCollection" },
+      "description": "User-scoped research collections"
+    },
+    "/publications/{pubId}": {
+      "schema": { "$ref": "#/entities/Publication" },
+      "description": "Publicly readable normalized research feed items"
+    }
+  }
+}

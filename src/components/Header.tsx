@@ -25,8 +25,8 @@ interface HeaderProps {
   activeStreamingCount?: number;
   historyCount: number;
   settings: VaultSettings;
-  activeTab: 'single' | 'batch' | 'history';
-  setActiveTab: (tab: 'single' | 'batch' | 'history') => void;
+  activeTab: 'single' | 'batch' | 'history' | 'frontier';
+  setActiveTab: (tab: 'single' | 'batch' | 'history' | 'frontier') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -54,18 +54,18 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-lg tracking-tight text-zinc-900 dark:text-zinc-50 font-sans">
-                OmniSave
+                OmniSave &amp; FrontierAtlas
               </span>
               <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 tracking-wide uppercase">
-                HD Pro
+                Suite
               </span>
             </div>
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
-              <span>Pinterest</span>
+              <span>HD Media Vault</span>
               <span aria-hidden="true">·</span>
-              <span>Instagram Reels</span>
+              <span>5-Domain Research Observatory</span>
               <span aria-hidden="true">·</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-medium">Lightning Fast</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-medium">Real-Time</span>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('single')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
               activeTab === 'single'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
@@ -86,14 +86,26 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('batch')}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'batch'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>Batch Downloader</span>
+            <span>Batch Queue</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('frontier')}
+            className={`px-3 py-1.5 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+              activeTab === 'frontier'
+                ? 'bg-sky-500 text-slate-950 shadow-xs'
+                : 'text-sky-600 dark:text-sky-400 hover:bg-sky-500/10'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>FrontierAtlas Observatory</span>
           </button>
           <button
             type="button"
@@ -101,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
               setActiveTab('history');
               onOpenHistory();
             }}
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
               activeTab === 'history'
                 ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'

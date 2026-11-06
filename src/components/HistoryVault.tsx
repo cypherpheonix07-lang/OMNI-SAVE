@@ -33,6 +33,7 @@ import {
   DateFilterOption,
   SortOption,
 } from '../utils/vault-filter.js';
+import { VaultFrequencyChart } from './VaultFrequencyChart.js';
 
 interface HistoryVaultProps {
   isOpen: boolean;
@@ -332,6 +333,11 @@ export const HistoryVault: React.FC<HistoryVaultProps> = ({
                           ))}
                         </div>
                       )}
+                    </div>
+
+                    {/* D3 Download Frequency Line Chart spanning full width */}
+                    <div className="md:col-span-2">
+                      <VaultFrequencyChart history={history} />
                     </div>
                   </div>
                 )}

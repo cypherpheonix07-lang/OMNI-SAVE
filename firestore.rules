@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwnerUser(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        ((exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['Owner', 'Administrator']) ||
+         (request.auth.token.email == "ruthlesshackers01@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    function isValidUserDoc(data, userId) {
+      return data.uid == userId &&
+        data.email is string && data.email.size() <= 254 &&
+        data.role in ['Owner', 'Administrator', 'Member'] &&
+        (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 120)) &&
+        (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 1024));
+    }
+
+    function isValidSavedItem(data, userId) {
+      return data.uid == userId &&
+        data.itemId is string && data.itemId.size() > 0 && data.itemId.size() <= 160 &&
+        data.title is string && data.title.size() > 0 && data.title.size() <= 500 &&
+        data.domain is string && data.domain.size() <= 80 &&
+        (!('note' in data) || (data.note is string && data.note.size() <= 5000)) &&
+        data.savedAt is string;
+    }
+
+    function isValidCollection(data, userId) {
+      return data.uid == userId &&
+        data.id is string && data.id.size() > 0 && data.id.size() <= 120 &&
+        data.name is string && data.name.size() > 0 && data.name.size() <= 160 &&
+        (!('description' in data) || (data.description is string && data.description.size() <= 1000)) &&
+        data.createdAt is string;
+    }
+
+    // ===============================================================
+    // User Profiles & Scoped Subcollections
+    // ===============================================================
+    match /users/{userId} {
+      allow read: if isOwnerUser(userId) || isAdmin();
+      allow create: if isAuthenticated() &&
+        isOwnerUser(userId) &&
+        hasRequiredFields(['uid', 'email', 'role', 'createdAt']) &&
+        isValidUserDoc(request.resource.data, userId) &&
+        (request.resource.data.role == 'Member' || isAdmin());
+      allow update: if isAuthenticated() &&
+        (isOwnerUser(userId) || isAdmin()) &&
+        isValidUserDoc(request.resource.data, userId) &&
+        request.resource.data.uid == resource.data.uid &&
+        (request.resource.data.role == resource.data.role || isAdmin());
+      allow delete: if isAdmin();
+
+      match /savedItems/{itemId} {
+        allow read: if isOwnerUser(userId) || isAdmin();
+        allow create, update: if isOwnerUser(userId) &&
+          hasRequiredFields(['itemId', 'uid', 'title', 'domain', 'savedAt']) &&
+          isValidSavedItem(request.resource.data, userId);
+        allow delete: if isOwnerUser(userId) || isAdmin();
+      }
+
+      match /collections/{collectionId} {
+        allow read: if isOwnerUser(userId) || isAdmin();
+        allow create, update: if isOwnerUser(userId) &&
+          hasRequiredFields(['id', 'uid', 'name', 'createdAt']) &&
+          isValidCollection(request.resource.data, userId);
+        allow delete: if isOwnerUser(userId) || isAdmin();
+      }
+    }
+
+    // ===============================================================
+    // Normalized Publications & Feed Items (Public Read, Admin Write)
+    // ===============================================================
+    match /publications/{pubId} {
+      allow read: if true;
+      allow create, update: if isAdmin() &&
+        request.resource.data.title is string &&
+        request.resource.data.title.size() <= 500 &&
+        request.resource.data.domain is string &&
+        request.resource.data.summary is string &&
+        request.resource.data.summary.size() <= 10000;
+      allow delete: if isAdmin();
+    }
+  }
+}

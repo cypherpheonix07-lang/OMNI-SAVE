@@ -1,0 +1,892 @@
+FRONTIERATLAS — COMPLETE FRONTEND IMPLEMENTATION AND VERIFICATION PROMPT
+
+Act as a principal frontend engineer, product designer, accessibility engineer, scientific visualization developer, and QA engineer.
+
+Build the complete frontend for my existing FrontierAtlas application. Use the backend architecture, API contracts, authentication, research records, and preview manifests already defined in this project.
+
+Work directly in Google AI Studio’s available environment. Inspect actual capabilities and existing code before selecting tools or dependencies.
+
+Deliver an integrated application with working user journeys, real data connections, responsive layouts, and verified interactions.
+
+“Ultimate final product” means complete behavior within the agreed scope, clear evidence of verification, and honest handling of unavailable capabilities.
+
+1. PRODUCT PURPOSE
+
+FrontierAtlas is my personalized research discovery and exploration platform covering:
+
+- Artificial intelligence, neural networks, deep tech, and engineering.
+- Quantum computing and quantum technologies.
+- Neuroscience, neurotechnology, and neural engineering.
+- Bioengineering and biotechnology.
+- Robotics, autonomous systems, and supporting hardware.
+
+I should be able to discover a development, understand its evidence and operation, identify its researchers and development locations, explore available software or 3D experiences, and save it for later.
+
+Keep artificial neural networks distinct from biological neural systems while supporting interdisciplinary links.
+
+2. START WITH A COMPLETENESS AUDIT
+
+Inspect:
+
+- Current routes and navigation.
+- Existing components and styles.
+- Authentication and session handling.
+- API contracts and actual responses.
+- Data fetching and caching.
+- Existing mock content.
+- Backend availability.
+- Preview manifests.
+- Assets and licensing.
+- Mobile behavior.
+- Current tests and known errors.
+
+Create a requirement ledger with:
+
+Requirement ID
+User journey
+Route
+Component
+Data dependency
+Interaction
+Loading state
+Empty state
+Failure state
+Permission behavior
+Mobile behavior
+Verification status
+
+Classify requirements as implemented, missing, broken, blocked, or unverified.
+
+Preserve functional work. Replace incompatible implementations only when necessary and explain why.
+
+Do not claim to have inspected a resource or tested a browser that is unavailable.
+
+3. USE THESE PRODUCT PATTERNS
+
+Use these as functional references, not designs to copy:
+
+- Semantic Scholar: personalized research feeds and alerts.
+- ResearchRabbit: relationship exploration and collections.
+- Elicit: inspectable evidence and structured comparisons.
+- Hugging Face Spaces: interactive software demonstrations.
+- Sketchfab: model inspection and embedded 3D controls.
+- Mol*: domain-specific molecular visualization.
+- OpenAlex: relationships between works, people, institutions, and geography.
+
+Create original branding and layouts. Do not copy proprietary assets or imply these providers are integrated unless a real integration exists.
+
+4. DEFINE THE MAIN USER JOURNEYS
+
+Complete each journey end to end:
+
+A. Sign in → select interests → personalized dashboard.
+B. Browse updates → filter results → open project → inspect evidence.
+C. Explore a country → open institution → view associated projects.
+D. Open researcher → inspect verified affiliations → follow updates.
+E. Open software project → launch available demo → inspect output.
+F. Open hardware project → explore supported 3D asset → inspect component.
+G. Open biological project → use appropriate scientific viewer when available.
+H. Save project → organize collection → add private note → revisit later.
+I. Select projects → compare evidence and capabilities.
+J. Receive update → open relevant project revision.
+K. Lose connection → see accurate offline state → reconnect safely.
+L. Administrator reviews source failure → inspects job → retries when authorized.
+
+Each journey must have a meaningful completion state and recoverable failure behavior.
+
+5. INFORMATION ARCHITECTURE
+
+Create routes or equivalent platform pages for:
+
+/onboarding
+/sign-in
+/auth/callback
+/access-required
+
+/app
+/app/feed
+/app/topics
+/app/topics/:slug
+/app/search
+
+/app/explore
+/app/countries/:code
+/app/institutions
+/app/institutions/:id
+/app/labs/:id
+/app/researchers/:id
+
+/app/projects/:id
+/app/projects/:id/software
+/app/projects/:id/explore
+/app/projects/:id/evidence
+/app/projects/:id/updates
+
+/app/graph
+/app/compare
+
+/app/library
+/app/collections/:id
+/app/notifications
+/app/settings
+
+/app/admin/sources
+/app/admin/jobs
+/app/admin/assets
+/app/admin/health
+
+Add proper not-found, unauthorized, session-expired, and application-error views.
+
+Use existing route conventions when appropriate.
+
+If registration is invite-only, show an accurate access flow. Do not create an unrestricted signup screen that contradicts backend policy.
+
+6. APPLICATION SHELL
+
+Desktop:
+
+- Persistent collapsible navigation.
+- Global search.
+- Page title and breadcrumbs.
+- Account and notification controls.
+- Contextual actions.
+- Optional contextual detail panel.
+
+Mobile:
+
+- Bottom navigation for Home, Discover, Explore, Library, and More.
+- Search accessible without opening multiple menus.
+- Filter sheets.
+- Safe-area spacing.
+- Dedicated full-screen preview layout.
+
+Use one consistent navigation model. Avoid showing every research subcategory as a separate top-level navigation item.
+
+Preserve filters and scroll position when returning from project details.
+
+Ensure deep links survive page refresh and browser back/forward navigation.
+
+7. DESIGN SYSTEM
+
+Build reusable tokens and components.
+
+Starting palette:
+
+Dark background: #0B1020
+Surface: #141C2F
+Elevated surface: #1B2740
+Primary accent: #6366F1
+Secondary accent: #06B6D4
+Main text: #F8FAFC
+Muted text: #A8B3C7
+Success: #22C55E
+Warning: #F59E0B
+Error: #EF4444
+Light background: #F8FAFC
+Light surface: #FFFFFF
+Light text: #0F172A
+
+Verify contrast and adjust actual combinations.
+
+Support light, dark, and system themes without a disruptive initial theme flash.
+
+Use original Figma-ready tokens. If an accessible Figma design is supplied, inspect and use its real variables. Do not invent Figma attribution.
+
+Create consistent:
+
+- Typography and spacing.
+- Buttons and links.
+- Form controls.
+- Search fields.
+- Cards and tables.
+- Badges and metadata rows.
+- Dialogs and sheets.
+- Tabs and disclosures.
+- Tooltips.
+- Toasts.
+- Skeletons.
+- Empty and error states.
+- Citation cards.
+- Preview controls.
+
+Prefer readable research content over decorative effects. Keep motion subtle and optional.
+
+8. ONBOARDING AND ACCOUNT EXPERIENCE
+
+Support:
+
+- Authentication loading.
+- Successful sign-in.
+- Cancelled sign-in.
+- Provider failure.
+- Access denied.
+- Expired session.
+- Sign-out.
+
+Preserve intended destination after authentication.
+
+Allow selection of:
+
+- Topics.
+- Countries.
+- Institutions.
+- Software and hardware interests.
+- Explanation depth.
+- Language and timezone.
+- Notification preferences.
+
+Make onboarding skippable and editable.
+
+When a session expires during editing, preserve the unsaved draft locally where appropriate and explain how to resume. Clear sensitive account caches on logout or account change.
+
+Do not display unsupported authentication providers.
+
+9. PERSONALIZED DASHBOARD
+
+Show:
+
+- Relevant recent updates.
+- Followed institution activity.
+- Saved projects with changes.
+- Available software demonstrations.
+- Available 3D experiences.
+- Continue reading.
+- A compact source-freshness summary.
+
+Every section must be based on actual data.
+
+Do not invent trending counts, community activity, adoption statistics, or personalized AI scores.
+
+Allow users to inspect why an item was recommended and adjust their preferences.
+
+Show useful onboarding guidance when there is not enough data.
+
+10. RESEARCH FEED AND SEARCH
+
+Cards should show applicable:
+
+- Title.
+- Concise summary.
+- Domain.
+- Institution and country.
+- Publication date.
+- Source type.
+- Research status.
+- Preview capabilities.
+- Save, follow, and compare actions.
+
+Distinguish publication time from the latest ingestion check.
+
+Provide:
+
+- Keyword search.
+- Domain and subtopic filters.
+- Country and institution filters.
+- Publication range.
+- Software/hardware filters.
+- Evidence status.
+- Code, dataset, and preview availability.
+- Relevance and chronological sorting.
+- Clear filters.
+
+Synchronize shareable search state with the URL.
+
+Cancel or disregard stale requests when filters change quickly.
+
+Use pagination or carefully controlled incremental loading. Preserve accessible navigation and a route back to earlier results.
+
+When live records arrive, show “new items available” instead of unexpectedly shifting the page.
+
+Distinguish:
+
+- No results.
+- No indexed content.
+- Backend unavailable.
+- Filters too restrictive.
+- Offline cached results.
+
+11. PROJECT DETAIL EXPERIENCE
+
+Create a readable overview with deeper sections.
+
+Header:
+
+- Title.
+- Summary.
+- Domain and status.
+- Institutions and countries.
+- Dates.
+- Save, follow, compare, and share.
+- Available demo and 3D actions.
+
+Sections:
+
+- Overview.
+- How it works.
+- Software.
+- Hardware.
+- Images and diagrams.
+- Evidence and results.
+- Researchers and development locations.
+- Resources.
+- Related research.
+- Updates and corrections.
+
+Hide irrelevant sections or explain missing information without filling space with invented content.
+
+Use a table of contents on large screens and compact section navigation on mobile.
+
+Keep supporting citations close to the claims they support.
+
+Distinguish:
+
+Source-reported finding.
+Generated explanation.
+Educational illustration.
+Independently reproduced result.
+Unverified or missing information.
+
+Display corrections and retractions prominently.
+
+For biomedical topics, show the documented study stage without suggesting clinical effectiveness or approval.
+
+12. SOFTWARE AND HARDWARE CONTENT
+
+Software details should support:
+
+- Architecture.
+- Models and algorithms.
+- Inputs and outputs.
+- Dependencies.
+- APIs.
+- Compute requirements.
+- Datasets.
+- Code and license.
+- Reproduction instructions.
+- Demo availability.
+
+Hardware details should support:
+
+- Component structure.
+- Sensors and actuators.
+- Processing and control.
+- Materials and dimensions.
+- Power and interfaces.
+- Signal or process flow.
+- Operating constraints.
+- Available models and diagrams.
+
+For mixed systems, explain the connection between the software and hardware.
+
+Use suitable units and preserve unknown values as unknown.
+
+13. EVIDENCE AND MEDIA INSPECTION
+
+Build an evidence drawer or page where users can inspect:
+
+- Source title.
+- Publisher.
+- Publication date.
+- Canonical link.
+- Source type.
+- Relevant excerpt when permitted.
+- Associated claim.
+- Extraction or generation status.
+
+Images and diagrams need captions, alternative text, source attribution, and applicable licensing.
+
+Distinguish source figures from explanatory reconstructions.
+
+Provide zoom and full-screen viewing.
+
+Do not assume every paper can be embedded. Respect access restrictions and offer an external link when embedding or retrieval is unavailable.
+
+Render external markup safely.
+
+Use precise SVG or equivalent diagrams for architecture and data flow. Do not make technically meaningful diagrams from decorative generated imagery.
+
+14. COUNTRY, INSTITUTION, AND RESEARCHER EXPLORATION
+
+Provide a synchronized map and list.
+
+Map selections must update the visible list and filters.
+
+Show indexed coverage, not claims about the entire global research landscape.
+
+Distinguish:
+
+- Institution address.
+- Author affiliation.
+- Confirmed development location.
+
+Support multinational projects.
+
+Institution pages should show verified overview, labs, topics, projects, collaborators, official links, and follow controls.
+
+Researcher pages should preserve verified identities and affiliations. Do not merge people based on names alone.
+
+Provide usable list-based access when maps cannot load or cannot be operated.
+
+15. RESEARCH RELATIONSHIP GRAPH
+
+Add a bounded graph showing real relationships such as:
+
+- Project to publication.
+- Publication to cited publication.
+- Project to institution.
+- Researcher to institution.
+- Project to dataset or repository.
+
+Label edge meanings.
+
+Do not invent causal relationships or scientific agreement from similarity.
+
+Support node selection, focus, filters, reset, and a detail panel.
+
+Load neighborhoods incrementally rather than rendering the entire corpus.
+
+Provide an equivalent accessible relationship list.
+
+16. DEDICATED 3D EXPLORATION STUDIO
+
+Create a proper exploration page driven by the backend preview manifest.
+
+Desktop layout:
+
+- Component tree.
+- Main viewport.
+- Contextual information panel.
+- Display controls.
+- Timeline or parameters when supported.
+
+Mobile layout:
+
+- Full-width viewport.
+- Compact toolbar.
+- Component and information sheets.
+- Comfortable touch controls.
+
+Implement supported:
+
+- Rotate, pan, and zoom.
+- Reset view.
+- Camera presets.
+- Component selection.
+- Highlight, hide, and isolate.
+- Hotspots.
+- Exploded view.
+- Transparency and wireframe.
+- Animation play, pause, and scrub.
+- Full-screen mode.
+- Guided explanation steps.
+
+Only enable controls that the loaded asset actually supports.
+
+Keep component selection synchronized between the tree, viewport, and information panel.
+
+Display source, asset version, representation type, and model limitations.
+
+Measurements require verified scale.
+
+17. USE DOMAIN-APPROPRIATE VIEWERS
+
+Use a renderer adapter rather than one universal model assumption.
+
+Examples:
+
+- Engineering GLB/glTF assets: appropriate general-purpose WebGL viewer.
+- Molecular structures: a suitable molecular viewer, such as Mol*, when supported.
+- Neural diagrams: graph or scientific visualization suited to the actual data.
+- Quantum circuits: circuit and probability visualization with supported simulation.
+- Recorded experiments: media player with accurate labels.
+
+Validate current package compatibility before integration.
+
+Load specialized viewers only on demand.
+
+Do not claim a generic animated object is a validated scientific simulation.
+
+18. PREVIEW STATES AND RESILIENCE
+
+Support:
+
+- Preview not available.
+- Asset metadata loading.
+- Asset download.
+- Parsing.
+- Ready.
+- Unsupported format.
+- WebGL unavailable.
+- WebGL context loss.
+- Asset access expired.
+- Network failure.
+- Simulation failed.
+- Recorded-only experience.
+
+Show real progress when measurable; use an indeterminate indicator otherwise.
+
+Dispose of GPU resources and event handlers on unmount.
+
+Pause rendering when offscreen or backgrounded where appropriate.
+
+Provide a static image, component list, or recorded alternative when interactive rendering is unavailable.
+
+Avoid mounting multiple expensive 3D canvases throughout the feed.
+
+19. SOFTWARE DEMO STUDIO
+
+Drive the interface from the backend capability manifest.
+
+Support applicable:
+
+- Sample selection.
+- Input validation.
+- Run.
+- Cancel when supported.
+- Reset.
+- Output display.
+- Execution status.
+- Sanitized logs.
+- Runtime and environment information.
+- External official-demo link.
+
+Distinguish queued, running, succeeded, failed, cancelled, and timed-out states.
+
+Only display Stop when execution can actually be stopped. Otherwise explain that the user can disconnect the display while execution may continue.
+
+Use appropriate isolation for external embeds and validate postMessage origins and message schemas.
+
+Do not attempt to bypass iframe restrictions.
+
+Never run arbitrary downloaded code in the main application context.
+
+20. SIMULATION AND LIVE TELEMETRY LABELING
+
+Keep these labels distinct:
+
+Interactive visualization.
+Animated explanation.
+Kinematic simulation.
+Physics simulation.
+Recorded demonstration.
+Live telemetry.
+Authorized remote operation.
+
+For simulations, show assumptions, units, supported ranges, and reset behavior.
+
+For live telemetry, show source timestamps, connection state, and stale-data warnings.
+
+Do not animate fake data to imply a connected device.
+
+Only expose device controls when the backend confirms authorization and capability.
+
+21. PERSONAL LIBRARY AND COMPARISON
+
+Implement:
+
+- Bookmarks.
+- Collections.
+- Rename and delete collection.
+- Add and remove projects.
+- Private notes.
+- Reading state.
+- Follow controls.
+- Persistent comparison selection.
+
+Handle failed optimistic updates with rollback and useful feedback.
+
+Protect unsaved notes and show save status. Detect conflicting edits where supported.
+
+Keep personal collections private by default.
+
+Only create share links when the backend supports explicit sharing permissions.
+
+Comparison should support two to four projects and include:
+
+- Problem and method.
+- Institutions and countries.
+- Evidence status.
+- Software and hardware.
+- Available resources.
+- Preview capability.
+- Licensing.
+- Results where comparable.
+
+Show “not comparable” when benchmark conditions differ. Unknown values must not appear as zero.
+
+22. AI RESEARCH ASSISTANT
+
+Integrate the existing source-grounded backend assistant.
+
+Show which project or sources are in context.
+
+Support:
+
+- Explain simply.
+- Explain technically.
+- Explain a selected component.
+- Compare selected projects.
+- Identify prerequisites.
+- Explain limitations.
+
+Render citations as inspectable links to source records.
+
+Handle streaming, cancellation, quota exhaustion, provider errors, and insufficient evidence.
+
+Do not expose provider keys.
+
+Do not invent an answer when the backend fails.
+
+Keep ordinary browsing functional when AI features are unavailable.
+
+23. NOTIFICATIONS, SETTINGS, AND ADMINISTRATION
+
+Notifications:
+
+- Read/unread.
+- Relevant project links.
+- Update type.
+- Timestamp.
+- Mark all read.
+- Preferences.
+- Accurate empty states.
+
+Settings:
+
+- Interests.
+- Institutions and countries.
+- Explanation depth.
+- Theme.
+- Timezone and language.
+- Notifications.
+- Reduced motion.
+- Data-saving preferences.
+- Account-data actions supported by the backend.
+
+Administration:
+
+- Source status.
+- Last successful fetch.
+- Failed jobs.
+- Retry controls.
+- Asset processing.
+- Corrections.
+- Integration configuration status.
+
+Frontend route guards improve navigation but do not replace backend authorization.
+
+Display operational detail only to authorized users.
+
+24. FRONTEND DATA ARCHITECTURE
+
+Create a centralized, typed service layer.
+
+Use runtime validation where external responses require it.
+
+Separate:
+
+- Server data.
+- Authentication state.
+- URL state.
+- Temporary component state.
+- Form drafts.
+- Persistent user preferences.
+
+Use account-aware cache keys. Clear private caches on logout and account change.
+
+Avoid duplicated fetch logic and unbounded global state.
+
+Use bounded live listeners and clean them up.
+
+Do not invent successful API responses to complete a screen.
+
+If a required backend operation is missing, implement it within the authorized scope or expose a precise blocked state.
+
+Do not silently place private records in localStorage as a replacement for backend persistence.
+
+25. MOBILE, PWA, AND OFFLINE EXPERIENCE
+
+Support responsive layouts at representative widths including:
+
+360, 390, 768, 1024, and 1440 pixels.
+
+Test short screens and landscape orientation as well.
+
+Use touch targets of approximately 44 CSS pixels or larger where practical.
+
+Support safe-area insets and virtual-keyboard behavior.
+
+Do not require hover.
+
+Implement the existing PWA plan with:
+
+- Manifest and icons.
+- Appropriate install guidance.
+- Offline fallback.
+- Clearly identified saved offline content.
+- Update-available prompt.
+- Safe cache boundaries.
+
+Do not cache private API responses indiscriminately.
+
+Prevent service-worker updates from discarding unsaved work.
+
+Clearly distinguish the mobile web/PWA deliverable from an actual native app.
+
+26. ACCESSIBILITY
+
+Target WCAG 2.2 AA.
+
+Provide:
+
+- Semantic landmarks.
+- Logical headings.
+- Skip navigation.
+- Visible keyboard focus.
+- Keyboard-operable controls.
+- Text alternatives.
+- Accessible forms and errors.
+- Reduced-motion support.
+- Non-color status indicators.
+- Accessible tables.
+- Text alternatives for graphs and 3D information.
+
+For dialogs and sheets:
+
+- Move focus into the opened interface.
+- Contain focus appropriately.
+- Close with Escape where appropriate.
+- Restore focus to the triggering control.
+- Make background content inert when appropriate.
+- Never apply aria-hidden to an ancestor that still contains focus.
+
+Ensure route changes and asynchronous status updates are announced appropriately without excessive screen-reader noise.
+
+27. PERFORMANCE
+
+Keep heavy viewers and map packages outside the initial application bundle.
+
+Use route-level lazy loading and stable skeleton dimensions.
+
+Optimize image sizes and reserve aspect ratios.
+
+Avoid loading full-resolution 3D assets in research cards.
+
+Virtualize long lists only when necessary and preserve accessibility.
+
+Prevent duplicate requests, leaking listeners, runaway animations, and stale response overwrites.
+
+Set measurable performance budgets before implementation and report the tested device, network conditions, and dataset size.
+
+Use Core Web Vitals targets where measurable, but distinguish local lab checks from production field data.
+
+Do not invent performance scores.
+
+28. COMPLETE INTERACTION STATES
+
+For every data-driven component, explicitly handle:
+
+Loading.
+Success.
+Empty.
+Partial data.
+Stale data.
+Offline.
+Error.
+Retrying.
+Permission denied.
+Session expired.
+Feature unavailable.
+
+For every mutation, handle:
+
+Idle.
+Validation failure.
+Submitting.
+Success.
+Failure.
+Retry or recovery.
+
+A missing field must not break the page.
+
+A failed secondary request must not erase successfully loaded primary content.
+
+Avoid indefinite spinners and unhelpful generic error messages.
+
+29. VERIFICATION MATRIX
+
+Test representative complete journeys rather than isolated cosmetic checks.
+
+Required verification includes:
+
+- Sign-in and session restoration.
+- Invite-only access behavior.
+- Onboarding persistence.
+- Feed filtering and sorting.
+- URL state and deep links.
+- Search cancellation and no-results behavior.
+- Project citations.
+- Country and institution navigation.
+- Bookmark persistence.
+- Collection and note mutations.
+- Compare workflow.
+- Incoming updates without scroll jumps.
+- Notification links.
+- Software preview success and failure.
+- 3D loading and fallback.
+- Viewer resource cleanup.
+- AI unavailable and quota states.
+- Offline and reconnect behavior.
+- Logout cache clearing.
+- Restricted administrative routes.
+- Keyboard navigation.
+- Dialog focus behavior.
+- Mobile layouts.
+- Browser console and network failures.
+
+Use automated tests where they protect meaningful behavior. Use browser-based visual inspection for layout and interaction quality.
+
+Test supported browsers when available. Record untested browsers honestly.
+
+Keep test fixtures visibly separate from live data.
+
+30. IMPLEMENTATION AND DELIVERY
+
+Work in stages:
+
+1. Audit and completeness ledger.
+2. Design tokens and application shell.
+3. Authentication and onboarding.
+4. Feed, search, and project detail.
+5. Institutions, countries, researchers, and graph.
+6. Personal library and comparison.
+7. Software studio and 3D studio.
+8. Assistant, notifications, and administration.
+9. PWA, accessibility, and performance.
+10. End-to-end verification and repairs.
+
+Continue through implementation rather than stopping after a plan.
+
+Complete the main discovery-to-exploration journey before expanding secondary surfaces.
+
+For every visible control, verify its action, backend dependency, state transitions, and error recovery.
+
+Final report:
+
+- Completed routes.
+- Completed user journeys.
+- Backend integrations actually connected.
+- Remaining blocked dependencies.
+- Tests executed and results.
+- Responsive layouts inspected.
+- Accessibility issues found and fixed.
+- Performance measurements.
+- Remaining defects.
+
+Use PASS, FAIL, BLOCKED, and NOT RUN precisely.
+
+Do not declare the product finished while core journeys still contain silent mocks, dead controls, broken routes, or unverified integrations.
+
+Prepare the application for deployment. Follow the user’s existing authorization for publishing and repository changes; do not infer authorization for new paid services.
+
+Begin with the existing project audit, then build and verify the complete FrontierAtlas frontend.

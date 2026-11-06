@@ -4,6 +4,7 @@ import path from 'path';
 import { createRequire } from 'module';
 import { detectPlatform, sanitizeUrl, generateSafeFilename } from './src/utils/media-parser.js';
 import { MediaItem, MediaQuality } from './src/types/media.js';
+import { frontierRouter } from './src/server/frontier-routes.js';
 
 const require = createRequire(import.meta.url);
 const archiver = require('archiver');
@@ -610,9 +611,12 @@ app.get('/api/health', (_req: Request, res: Response) => {
     uptimeSeconds: Math.floor(process.uptime()),
     cacheCount: mediaCache.size,
     supportedPlatforms: ['pinterest', 'instagram'],
-    engine: 'OmniSave HyperFetch v2.4',
+    engine: 'OmniSave HyperFetch v2.4 + FrontierAtlas v1.0',
   });
 });
+
+// Mount FrontierAtlas Real-Time Backend API (/api/v1/*)
+app.use('/api/v1', frontierRouter);
 
 // ================= VITE DEV OR PROD SERVER =================
 
